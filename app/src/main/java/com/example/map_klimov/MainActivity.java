@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MapKitFactory.setApiKey("1bc96f90-1daf-4320-8068-5576dfa9621f");
+        MapKitFactory.setApiKey("Key_Klimov");
         MapKitFactory.initialize(this);
         setContentView(R.layout.activity_main);
 
