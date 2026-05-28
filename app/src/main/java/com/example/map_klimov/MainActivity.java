@@ -1,5 +1,7 @@
 package com.example.map_klimov;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -60,4 +63,31 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        MapKitFactory.getInstance().onStart();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, 1);
+        }
+
+        _LocationManger.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 10, _locationListener);
+        _LocationManger.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, _locationListener);
+
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mapView.onStop();
+
+        MapKitFactory.getInstance().onStop();
+    }
 }
