@@ -14,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.yandex.mapkit.Image;
+import com.yandex.mapkit.MapKit;
+import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
 import com.yandex.mapkit.mapview.MapView;
@@ -27,8 +29,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        MapKitFactory.setApiKey("1bc96f90-1daf-4320-8068-5576dfa9621f");
+        MapKitFactory.initialize(this);
         setContentView(R.layout.activity_main);
+
+        mapView = findViewById(R.id.mapView);
+        textAddress = findViewById(R.id.editText);
+
+        _LocationManger = (LocationManager) getSystemService(LOCATION_SERVICE);
     }
 
     LocationListener _locationListener = new LocationListener() {
