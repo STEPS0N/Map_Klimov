@@ -1,4 +1,4 @@
-package com.example.map_klimov;
+package com.example.map_klimov.presentations;
 
 import java.util.ArrayList;
 

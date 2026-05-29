@@ -1,8 +1,6 @@
-package com.example.map_klimov;
+package com.example.map_klimov.presentations;
 
 import android.os.AsyncTask;
-import android.provider.DocumentsContract;
-import android.service.voice.VoiceInteractionService;
 import android.widget.TextView;
 
 import com.google.gson.GsonBuilder;

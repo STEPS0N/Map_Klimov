@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Map_Klimov">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentations.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
